@@ -1,0 +1,35 @@
+server:
+  port: 30001
+  servlet:
+    context-path: /todolist
+spring:
+  jta:
+    atomikos:
+      properties:
+        default-jta-timeout: 60000
+  datasource:
+    url: jdbc:mysql://localhost:3306/todolist?characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: rxsoftdev
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+      filters: stat
+      async-init: true
+## 该配置节点为独立的节点，有很多同学容易将这个配置放在spring的节点下，导致配置无法被识别
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.rxsoft.orm.model  # 注意：对应实体类的路径
+  configuration:
+    cache-enabled: true
