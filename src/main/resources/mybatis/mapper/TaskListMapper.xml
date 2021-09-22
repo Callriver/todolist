@@ -35,4 +35,12 @@
     select list_id, user_id, list_name, list_priority
     from task_list
   </select>
+  <delete id="deleteByUserId" parameterType="map">
+    delete from task_list
+    where  user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <select id="selectMaxIdByUserId" parameterType="map" resultType="Integer">
+    select max(list_id) from task_list
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
 </mapper>

@@ -57,4 +57,8 @@
     task_repetition_period, task_cust_date, task_note, task_attachment
     from task
   </select>
+  <delete id="deleteByUserId" parameterType="map">
+    delete from task
+    where list_id in (select list_id from task_list where user_id = #{userId,jdbcType=VARCHAR})
+  </delete>
 </mapper>
