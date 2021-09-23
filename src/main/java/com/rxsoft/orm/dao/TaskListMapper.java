@@ -14,4 +14,8 @@ public interface TaskListMapper {
     List<TaskList> selectAll();
 
     int updateByPrimaryKey(TaskList record);
+
+    int deleteByUserId(@Param("userId") String userId);
+
+    Integer selectMaxIdByUserId(String userId);
 }

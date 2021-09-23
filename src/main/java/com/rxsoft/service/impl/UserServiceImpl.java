@@ -1,5 +1,7 @@
 package com.rxsoft.service.impl;
 
+import com.rxsoft.orm.dao.TaskListMapper;
+import com.rxsoft.orm.dao.TaskMapper;
 import com.rxsoft.orm.dao.UserMapper;
 import com.rxsoft.orm.model.User;
 import com.rxsoft.service.UserService;
@@ -12,6 +14,10 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
     @Autowired(required=true)
     UserMapper userMapper;
+    @Autowired(required=true)
+    TaskMapper taskMapper;
+    @Autowired(required=true)
+    TaskListMapper taskListMapper;
 
     //注册用户
     @Override
@@ -30,5 +36,34 @@ public class UserServiceImpl implements UserService {
             return 0;
         }
 
+    }
+    //登录
+    @Override
+    public User login(String account, String passWord, int loginType) {
+        User user = new User();
+        //类型为1，作为用户ID，类型为2，作为手机号，类型为3，作为邮箱
+        if (loginType==1){
+            user = userMapper.selectByPrimaryKey(account);
+        }else if (loginType==2){
+            user = userMapper.selectByTel(account);
+        }else if (loginType==3){
+            user = userMapper.selectByEmail(account);
+        }
+        return user;
+    }
+    //注销账号
+    @Override
+    public int closeAccount(String account) {
+        int result1 = taskMapper.deleteByUserId(account);
+        int result2 = taskListMapper.deleteByUserId(account);
+        int result3 = userMapper.deleteByPrimaryKey(account);
+        int result = result1 + result2 + result3;
+        return result;
+    }
+
+    @Override
+    public int updateAccount(User user) {
+        int result = userMapper.updateByPrimaryKey(user);
+        return result;
     }
 }

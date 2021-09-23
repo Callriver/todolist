@@ -39,4 +39,14 @@
     select user_id, user_pwd, user_name, user_file_space, user_phone, user_email
     from user
   </select>
+  <select id="selectByTel" parameterType="java.lang.String"  resultMap="BaseResultMap">
+    select user_id, user_pwd, user_name, user_file_space, user_phone, user_email
+    from user
+    where user_phone = #{tel,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select user_id, user_pwd, user_name, user_file_space, user_phone, user_email
+    from user
+    where user_email = #{email,jdbcType=VARCHAR}
+  </select>
 </mapper>

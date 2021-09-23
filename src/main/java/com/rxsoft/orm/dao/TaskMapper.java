@@ -14,4 +14,6 @@ public interface TaskMapper {
     List<Task> selectAll();
 
     int updateByPrimaryKey(Task record);
+
+    int deleteByUserId(@Param("userId") String userId);
 }
