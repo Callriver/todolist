@@ -4,6 +4,122 @@
   <resultMap id="BaseResultMap" type="com.rxsoft.orm.model.Task">
     <id column="task_id" jdbcType="INTEGER" property="taskId" />
     <id column="list_id" jdbcType="INTEGER" property="listId" />
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="task_name" jdbcType="VARCHAR" property="taskName" />
+    <result column="task_priority" jdbcType="INTEGER" property="taskPriority" />
+    <result column="task_state" jdbcType="INTEGER" property="taskState" />
+    <result column="task_date" jdbcType="DATE" property="taskDate" />
+    <result column="task_remind_time" jdbcType="TIMESTAMP" property="taskRemindTime" />
+    <result column="task_repetition_period" jdbcType="INTEGER" property="taskRepetitionPeriod" />
+    <result column="task_cust_date" jdbcType="INTEGER" property="taskCustDate" />
+    <result column="task_note" jdbcType="VARCHAR" property="taskNote" />
+    <result column="task_attachment" jdbcType="VARCHAR" property="taskAttachment" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from task
+    where task_id = #{taskId,jdbcType=INTEGER}
+      and list_id = #{listId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.rxsoft.orm.model.Task">
+    insert into task (task_id, list_id, user_id, 
+      task_name, task_priority, task_state, 
+      task_date, task_remind_time, task_repetition_period, 
+      task_cust_date, task_note, task_attachment
+      )
+    values (#{taskId,jdbcType=INTEGER}, #{listId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, 
+      #{taskName,jdbcType=VARCHAR}, #{taskPriority,jdbcType=INTEGER}, #{taskState,jdbcType=INTEGER}, 
+      #{taskDate,jdbcType=DATE}, #{taskRemindTime,jdbcType=TIMESTAMP}, #{taskRepetitionPeriod,jdbcType=INTEGER}, 
+      #{taskCustDate,jdbcType=INTEGER}, #{taskNote,jdbcType=VARCHAR}, #{taskAttachment,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.rxsoft.orm.model.Task">
+    update task
+    set task_name = #{taskName,jdbcType=VARCHAR},
+      task_priority = #{taskPriority,jdbcType=INTEGER},
+      task_state = #{taskState,jdbcType=INTEGER},
+      task_date = #{taskDate,jdbcType=DATE},
+      task_remind_time = #{taskRemindTime,jdbcType=TIMESTAMP},
+      task_repetition_period = #{taskRepetitionPeriod,jdbcType=INTEGER},
+      task_cust_date = #{taskCustDate,jdbcType=INTEGER},
+      task_note = #{taskNote,jdbcType=VARCHAR},
+      task_attachment = #{taskAttachment,jdbcType=VARCHAR}
+    where task_id = #{taskId,jdbcType=INTEGER}
+      and list_id = #{listId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select task_id, list_id, user_id, task_name, task_priority, task_state, task_date, 
+    task_remind_time, task_repetition_period, task_cust_date, task_note, task_attachment
+    from task
+    where task_id = #{taskId,jdbcType=INTEGER}
+      and list_id = #{listId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select task_id, list_id, user_id, task_name, task_priority, task_state, task_date, 
+    task_remind_time, task_repetition_period, task_cust_date, task_note, task_attachment
+    from task
+  </select>
+  <resultMap id="BaseResultMap" type="com.rxsoft.orm.model.Task">
+    <id column="task_id" jdbcType="INTEGER" property="taskId" />
+    <id column="list_id" jdbcType="INTEGER" property="listId" />
+    <result column="task_name" jdbcType="VARCHAR" property="taskName" />
+    <result column="task_priority" jdbcType="INTEGER" property="taskPriority" />
+    <result column="task_state" jdbcType="INTEGER" property="taskState" />
+    <result column="task_date" jdbcType="DATE" property="taskDate" />
+    <result column="task_remind_time" jdbcType="TIMESTAMP" property="taskRemindTime" />
+    <result column="task_repetition_period" jdbcType="INTEGER" property="taskRepetitionPeriod" />
+    <result column="task_cust_date" jdbcType="INTEGER" property="taskCustDate" />
+    <result column="task_note" jdbcType="VARCHAR" property="taskNote" />
+    <result column="task_attachment" jdbcType="VARCHAR" property="taskAttachment" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from task
+    where task_id = #{taskId,jdbcType=INTEGER}
+      and list_id = #{listId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rxsoft.orm.model.Task">
+    insert into task (task_id, list_id, task_name, 
+      task_priority, task_state, task_date, 
+      task_remind_time, task_repetition_period, 
+      task_cust_date, task_note, task_attachment
+      )
+    values (#{taskId,jdbcType=INTEGER}, #{listId,jdbcType=INTEGER}, #{taskName,jdbcType=VARCHAR}, 
+      #{taskPriority,jdbcType=INTEGER}, #{taskState,jdbcType=INTEGER}, #{taskDate,jdbcType=DATE}, 
+      #{taskRemindTime,jdbcType=TIMESTAMP}, #{taskRepetitionPeriod,jdbcType=INTEGER}, 
+      #{taskCustDate,jdbcType=INTEGER}, #{taskNote,jdbcType=VARCHAR}, #{taskAttachment,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.rxsoft.orm.model.Task">
+    update task
+    set task_name = #{taskName,jdbcType=VARCHAR},
+      task_priority = #{taskPriority,jdbcType=INTEGER},
+      task_state = #{taskState,jdbcType=INTEGER},
+      task_date = #{taskDate,jdbcType=DATE},
+      task_remind_time = #{taskRemindTime,jdbcType=TIMESTAMP},
+      task_repetition_period = #{taskRepetitionPeriod,jdbcType=INTEGER},
+      task_cust_date = #{taskCustDate,jdbcType=INTEGER},
+      task_note = #{taskNote,jdbcType=VARCHAR},
+      task_attachment = #{taskAttachment,jdbcType=VARCHAR}
+    where task_id = #{taskId,jdbcType=INTEGER}
+      and list_id = #{listId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select task_id, list_id, task_name, task_priority, task_state, task_date, task_remind_time, 
+    task_repetition_period, task_cust_date, task_note, task_attachment
+    from task
+    where task_id = #{taskId,jdbcType=INTEGER}
+      and list_id = #{listId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select task_id, list_id, task_name, task_priority, task_state, task_date, task_remind_time, 
+    task_repetition_period, task_cust_date, task_note, task_attachment
+    from task
+  </select>
+  <resultMap id="BaseResultMap" type="com.rxsoft.orm.model.Task">
+    <id column="task_id" jdbcType="INTEGER" property="taskId" />
+    <id column="list_id" jdbcType="INTEGER" property="listId" />
     <result column="task_name" jdbcType="VARCHAR" property="taskName" />
     <result column="task_priority" jdbcType="INTEGER" property="taskPriority" />
     <result column="task_state" jdbcType="INTEGER" property="taskState" />
@@ -61,4 +177,9 @@
     delete from task
     where list_id in (select list_id from task_list where user_id = #{userId,jdbcType=VARCHAR})
   </delete>
+  <select id="selectMaxIdByUserIdListId" parameterType="map" resultMap="Integer">
+    select max(task_id) from task
+    where list_id = #{listId,jdbcType=Integer}
+      and user_id = #{userId,jdbcType=Inteder}
+  </select>
 </mapper>

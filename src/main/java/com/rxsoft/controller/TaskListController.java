@@ -38,7 +38,7 @@ public class TaskListController {
         return result;
     }
     //删除任务列表
-    @RequestMapping(value = "/updateTaskList",method = RequestMethod.POST)
+    @RequestMapping(value = "/delTaskList",method = RequestMethod.POST)
     public Object delTaskList(Integer listId,String userId){
         int result = taskListService.delTaskList(listId,userId);
         return result;

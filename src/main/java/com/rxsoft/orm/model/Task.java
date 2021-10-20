@@ -8,6 +8,8 @@ public class Task implements Serializable {
 
     private Integer listId;
 
+    private String userId;
+
     private String taskName;
 
     private Integer taskPriority;
@@ -42,6 +44,14 @@ public class Task implements Serializable {
 
     public void setListId(Integer listId) {
         this.listId = listId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public String getTaskName() {
@@ -124,6 +134,7 @@ public class Task implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", taskId=").append(taskId);
         sb.append(", listId=").append(listId);
+        sb.append(", userId=").append(userId);
         sb.append(", taskName=").append(taskName);
         sb.append(", taskPriority=").append(taskPriority);
         sb.append(", taskState=").append(taskState);
