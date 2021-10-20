@@ -34,13 +34,20 @@
             <property name="suppressDate" value="false"/> <!-- 是否生成注释代时间戳-->
         </commentGenerator>
 
+
         <!-- jdbc连接-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://140.143.202.165:3306/todolist" userId="root"
                         password="Rxsoftdev123.">
              <property name="nullCatalogMeansCurrent" value="true"/>
-        </jdbcConnection>
+        </jdbcConnection>-->
 
+        <!-- 开发环境jdbc连接-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/todolist" userId="root"
+                        password="rxsoftdev">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
 
         <!-- 类型转换 -->
         <javaTypeResolver>

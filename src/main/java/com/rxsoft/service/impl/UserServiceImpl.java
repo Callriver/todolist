@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
         int result = result1 + result2 + result3;
         return result;
     }
-
+    //更新用户信息
     @Override
     public int updateAccount(User user) {
         int result = userMapper.updateByPrimaryKey(user);
