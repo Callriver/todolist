@@ -1,5 +1,8 @@
 package com.rxsoft.orm.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,7 +19,9 @@ public class Task implements Serializable {
 
     private Integer taskState;
 
+
     private Date taskDate;
+
 
     private Date taskRemindTime;
 

@@ -8,13 +8,13 @@ public interface UserMapper {
 
     int insert(User record);
 
-    User selectByPrimaryKey(String userId);
+    User selectByPrimaryKey(String account, String passWord);
 
     List<User> selectAll();
 
     int updateByPrimaryKey(User record);
 
-    User selectByEmail(String account);
+    User selectByEmail(String account, String passWord);
 
-    User selectByTel(String account);
+    User selectByTel(String account, String passWord);
 }

@@ -7,9 +7,9 @@ spring:
     atomikos:
       properties:
         default-jta-timeout: 60000
-  jackson:
-    time-zone: GMT+8
-    date-format: yyyy-MM-dd HH:mm:ss
+#  jackson:
+#    time-zone: GMT+8
+#    date-format: yyyy-MM-dd HH:mm:ss
   datasource:
     url: jdbc:mysql://localhost:3306/todolist?characterEncoding=UTF-8&useSSL=false
     username: root

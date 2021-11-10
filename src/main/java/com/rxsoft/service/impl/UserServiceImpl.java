@@ -43,11 +43,11 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         //类型为1，作为用户ID，类型为2，作为手机号，类型为3，作为邮箱
         if (loginType==1){
-            user = userMapper.selectByPrimaryKey(account);
+            user = userMapper.selectByPrimaryKey(account,passWord);
         }else if (loginType==2){
-            user = userMapper.selectByTel(account);
+            user = userMapper.selectByTel(account,passWord);
         }else if (loginType==3){
-            user = userMapper.selectByEmail(account);
+            user = userMapper.selectByEmail(account,passWord);
         }
         return user;
     }

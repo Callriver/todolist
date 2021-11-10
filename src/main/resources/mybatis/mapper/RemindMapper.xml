@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rxsoft.orm.dao.RemindMapper">
+  <resultMap id="BaseResultMap" type="com.rxsoft.orm.model.Remind">
+    <id column="guid" jdbcType="VARCHAR" property="guid" />
+    <id column="task_id" jdbcType="INTEGER" property="taskId" />
+    <id column="list_id" jdbcType="INTEGER" property="listId" />
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="remind_date" jdbcType="TIMESTAMP" property="remindDate" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from remind
+    where guid = #{guid,jdbcType=VARCHAR}
+      and task_id = #{taskId,jdbcType=INTEGER}
+      and list_id = #{listId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.rxsoft.orm.model.Remind">
+    insert into remind (guid, task_id, list_id, 
+      user_id, remind_date)
+    values (#{guid,jdbcType=VARCHAR}, #{taskId,jdbcType=INTEGER}, #{listId,jdbcType=INTEGER}, 
+      #{userId,jdbcType=VARCHAR}, #{remindDate,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.rxsoft.orm.model.Remind">
+    update remind
+    set remind_date = #{remindDate,jdbcType=TIMESTAMP}
+    where guid = #{guid,jdbcType=VARCHAR}
+      and task_id = #{taskId,jdbcType=INTEGER}
+      and list_id = #{listId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select guid, task_id, list_id, user_id, remind_date
+    from remind
+    where guid = #{guid,jdbcType=VARCHAR}
+      and task_id = #{taskId,jdbcType=INTEGER}
+      and list_id = #{listId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select guid, task_id, list_id, user_id, remind_date
+    from remind
+  </select>
+</mapper>

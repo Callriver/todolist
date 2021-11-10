@@ -19,7 +19,14 @@ public class UserController {
     //注册
     @RequestMapping(value = "/regist",method = RequestMethod.POST)
     public Object regist(String userId,String passWord,String userName,String tel,String email){
-        int result = userService.regist(userId,passWord,userName,tel,email);
+
+        int result = 0;
+        try {
+            result = userService.regist(userId,passWord,userName,tel,email);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
         return result;
     }
     //登录

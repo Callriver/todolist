@@ -18,4 +18,6 @@ public interface TaskMapper {
     Integer selectMaxIdByUserIdListId(String userId, Integer listId);
 
     int deleteByUserId(String account);
+
+    int deleteByTaskId(Integer taskId, Integer listId, String userId);
 }
