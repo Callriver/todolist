@@ -15,6 +15,12 @@
       and list_id = #{listId,jdbcType=INTEGER}
       and user_id = #{userId,jdbcType=VARCHAR}
   </delete>
+  <delete id="deleteByTaskId" parameterType="map">
+    delete from remind
+    where  task_id = #{taskId,jdbcType=INTEGER}
+      and list_id = #{listId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
   <insert id="insert" parameterType="com.rxsoft.orm.model.Remind">
     insert into remind (guid, task_id, list_id, 
       user_id, remind_date)

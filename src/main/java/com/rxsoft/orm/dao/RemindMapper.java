@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Param;
 public interface RemindMapper {
     int deleteByPrimaryKey(@Param("guid") String guid, @Param("taskId") Integer taskId, @Param("listId") Integer listId, @Param("userId") String userId);
 
+    int deleteByTaskId(@Param("taskId") Integer taskId, @Param("listId") Integer listId, @Param("userId") String userId);
+
     int insert(Remind record);
 
     Remind selectByPrimaryKey(@Param("guid") String guid, @Param("taskId") Integer taskId, @Param("listId") Integer listId, @Param("userId") String userId);
