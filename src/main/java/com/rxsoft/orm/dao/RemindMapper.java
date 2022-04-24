@@ -9,6 +9,8 @@ public interface RemindMapper {
 
     int deleteByTaskId(@Param("taskId") Integer taskId, @Param("listId") Integer listId, @Param("userId") String userId);
 
+    int deleteByUserId(@Param("userId") String userId);
+
     int insert(Remind record);
 
     Remind selectByPrimaryKey(@Param("guid") String guid, @Param("taskId") Integer taskId, @Param("listId") Integer listId, @Param("userId") String userId);
@@ -16,4 +18,6 @@ public interface RemindMapper {
     List<Remind> selectAll();
 
     int updateByPrimaryKey(Remind record);
+
+    List<Remind> selectByCurentDay(@Param("userId") String userId);
 }

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * 任务列表
  */
@@ -42,5 +44,11 @@ public class TaskListController {
     public Object delTaskList(Integer listId,String userId){
         int result = taskListService.delTaskList(listId,userId);
         return result;
+    }
+    //查询用户任务列表
+    @RequestMapping(value = "/qryTaskList",method = RequestMethod.POST)
+    public Object qryTaskList(String userId){
+        List<TaskList> taskList = taskListService.qryTaskListByUserId(userId);
+        return taskList;
     }
 }

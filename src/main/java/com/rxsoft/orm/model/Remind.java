@@ -1,7 +1,8 @@
 package com.rxsoft.orm.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
+
 
 public class Remind implements Serializable {
     private String guid;
@@ -12,7 +13,7 @@ public class Remind implements Serializable {
 
     private String userId;
 
-    private Date remindDate;
+    private Timestamp remindDate;
 
     private static final long serialVersionUID = 1L;
 
@@ -48,11 +49,11 @@ public class Remind implements Serializable {
         this.userId = userId == null ? null : userId.trim();
     }
 
-    public Date getRemindDate() {
+    public Timestamp getRemindDate() {
         return remindDate;
     }
 
-    public void setRemindDate(Date remindDate) {
+    public void setRemindDate(Timestamp remindDate) {
         this.remindDate = remindDate;
     }
 

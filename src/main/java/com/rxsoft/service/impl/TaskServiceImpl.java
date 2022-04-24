@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -53,8 +54,9 @@ public class TaskServiceImpl implements TaskService {
                     remind.setListId(task.getListId());
                     remind.setTaskId(task.getTaskId());
                     remind.setUserId(task.getUserId());
-                    remind.setRemindDate(c.getTime());
+                    remind.setRemindDate(new java.sql.Timestamp(c.getTime().getTime()));
                     remindMapper.insert(remind);
+
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -75,7 +77,7 @@ public class TaskServiceImpl implements TaskService {
                     remind.setListId(task.getListId());
                     remind.setTaskId(task.getTaskId());
                     remind.setUserId(task.getUserId());
-                    remind.setRemindDate(c.getTime());
+                    remind.setRemindDate(new java.sql.Timestamp(c.getTime().getTime()));
                     //System.out.println(c.getTime()+"-"+(c.get(Calendar.DAY_OF_WEEK)));
                     if (c.get(Calendar.DAY_OF_WEEK)!=1 && c.get(Calendar.DAY_OF_WEEK)!=7)
                     {
@@ -105,7 +107,7 @@ public class TaskServiceImpl implements TaskService {
                     remind.setUserId(task.getUserId());
                     remind.setTaskId(task.getTaskId());
                     remind.setListId(task.getListId());
-                    remind.setRemindDate(c.getTime());
+                    remind.setRemindDate(new java.sql.Timestamp(c.getTime().getTime()));
                     remindMapper.insert(remind);
                 }
             } catch (ParseException e) {
@@ -128,7 +130,7 @@ public class TaskServiceImpl implements TaskService {
                     remind.setUserId(task.getUserId());
                     remind.setTaskId(task.getTaskId());
                     remind.setListId(task.getListId());
-                    remind.setRemindDate(c.getTime());
+                    remind.setRemindDate(new java.sql.Timestamp(c.getTime().getTime()));
                     remindMapper.insert(remind);
                 }
 
@@ -152,7 +154,7 @@ public class TaskServiceImpl implements TaskService {
                     remind.setUserId(task.getUserId());
                     remind.setTaskId(task.getTaskId());
                     remind.setListId(task.getListId());
-                    remind.setRemindDate(c.getTime());
+                    remind.setRemindDate(new java.sql.Timestamp(c.getTime().getTime()));
                     remindMapper.insert(remind);
                 }
             } catch (ParseException e) {
@@ -176,7 +178,7 @@ public class TaskServiceImpl implements TaskService {
                     remind.setUserId(task.getUserId());
                     remind.setTaskId(task.getTaskId());
                     remind.setListId(task.getListId());
-                    remind.setRemindDate(c.getTime());
+                    remind.setRemindDate(new java.sql.Timestamp(c.getTime().getTime()));
                     remindMapper.insert(remind);
                 }
             } catch (ParseException e) {
@@ -214,7 +216,7 @@ public class TaskServiceImpl implements TaskService {
                     remind.setListId(task.getListId());
                     remind.setTaskId(task.getTaskId());
                     remind.setUserId(task.getUserId());
-                    remind.setRemindDate(c.getTime());
+                    remind.setRemindDate(new java.sql.Timestamp(c.getTime().getTime()));
                     remindMapper.insert(remind);
                 }
             } catch (ParseException e) {
@@ -236,7 +238,7 @@ public class TaskServiceImpl implements TaskService {
                     remind.setListId(task.getListId());
                     remind.setTaskId(task.getTaskId());
                     remind.setUserId(task.getUserId());
-                    remind.setRemindDate(c.getTime());
+                    remind.setRemindDate(new java.sql.Timestamp(c.getTime().getTime()));
                     //System.out.println(c.getTime()+"-"+(c.get(Calendar.DAY_OF_WEEK)));
                     if (c.get(Calendar.DAY_OF_WEEK)!=1 && c.get(Calendar.DAY_OF_WEEK)!=7)
                     {
@@ -266,7 +268,7 @@ public class TaskServiceImpl implements TaskService {
                     remind.setUserId(task.getUserId());
                     remind.setTaskId(task.getTaskId());
                     remind.setListId(task.getListId());
-                    remind.setRemindDate(c.getTime());
+                    remind.setRemindDate(new java.sql.Timestamp(c.getTime().getTime()));
                     remindMapper.insert(remind);
                 }
             } catch (ParseException e) {
@@ -289,7 +291,7 @@ public class TaskServiceImpl implements TaskService {
                     remind.setUserId(task.getUserId());
                     remind.setTaskId(task.getTaskId());
                     remind.setListId(task.getListId());
-                    remind.setRemindDate(c.getTime());
+                    remind.setRemindDate(new java.sql.Timestamp(c.getTime().getTime()));
                     remindMapper.insert(remind);
                 }
 
@@ -313,7 +315,7 @@ public class TaskServiceImpl implements TaskService {
                     remind.setUserId(task.getUserId());
                     remind.setTaskId(task.getTaskId());
                     remind.setListId(task.getListId());
-                    remind.setRemindDate(c.getTime());
+                    remind.setRemindDate(new java.sql.Timestamp(c.getTime().getTime()));
                     remindMapper.insert(remind);
                 }
             } catch (ParseException e) {
@@ -337,7 +339,7 @@ public class TaskServiceImpl implements TaskService {
                     remind.setUserId(task.getUserId());
                     remind.setTaskId(task.getTaskId());
                     remind.setListId(task.getListId());
-                    remind.setRemindDate(c.getTime());
+                    remind.setRemindDate(new java.sql.Timestamp(c.getTime().getTime()));
                     remindMapper.insert(remind);
                 }
             } catch (ParseException e) {

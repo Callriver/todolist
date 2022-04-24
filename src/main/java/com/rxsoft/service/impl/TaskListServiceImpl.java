@@ -6,6 +6,8 @@ import com.rxsoft.service.TaskListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TaskListServiceImpl implements TaskListService {
 
@@ -35,4 +37,11 @@ public class TaskListServiceImpl implements TaskListService {
         int result = taskListMapper.deleteByPrimaryKey(listId,userId);
         return result;
     }
+
+    @Override
+    public List<TaskList> qryTaskListByUserId(String userId) {
+        List<TaskList> taskList = taskListMapper.selectByUserId(userId);
+        return taskList;
+    }
+
 }

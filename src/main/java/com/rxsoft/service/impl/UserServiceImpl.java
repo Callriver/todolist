@@ -1,5 +1,6 @@
 package com.rxsoft.service.impl;
 
+import com.rxsoft.orm.dao.RemindMapper;
 import com.rxsoft.orm.dao.TaskListMapper;
 import com.rxsoft.orm.dao.TaskMapper;
 import com.rxsoft.orm.dao.UserMapper;
@@ -18,6 +19,8 @@ public class UserServiceImpl implements UserService {
     TaskMapper taskMapper;
     @Autowired(required=true)
     TaskListMapper taskListMapper;
+    @Autowired(required=true)
+    RemindMapper remindMapper;
 
     //注册用户
     @Override
@@ -54,11 +57,12 @@ public class UserServiceImpl implements UserService {
     //注销账号
     @Override
     public int closeAccount(String account) {
-        int result1 = taskMapper.deleteByUserId(account);
-        int result2 = taskListMapper.deleteByUserId(account);
-        int result3 = userMapper.deleteByPrimaryKey(account);
-        int result = result1 + result2 + result3;
-        return result;
+        int result1 = remindMapper.deleteByUserId(account);
+        int result2 = taskMapper.deleteByUserId(account);
+        int result3 = taskListMapper.deleteByUserId(account);
+        int result4 = userMapper.deleteByPrimaryKey(account);
+
+        return result4;
     }
     //更新用户信息
     @Override

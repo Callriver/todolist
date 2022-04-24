@@ -11,6 +11,8 @@ public interface TaskListMapper {
 
     TaskList selectByPrimaryKey(@Param("listId") Integer listId, @Param("userId") String userId);
 
+    List<TaskList> selectByUserId(@Param("userId") String userId);
+
     List<TaskList> selectAll();
 
     int updateByPrimaryKey(TaskList record);

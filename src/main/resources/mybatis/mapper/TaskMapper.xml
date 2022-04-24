@@ -75,4 +75,9 @@
     where user_id = #{userId,jdbcType=VARCHAR}
       and list_id = #{listId,jdbcType=INTEGER}
   </select>
+  <delete id="deleteByUserId" parameterType="map">
+    delete from task
+    where  user_id = #{account,jdbcType=VARCHAR}
+  </delete>
+
 </mapper>

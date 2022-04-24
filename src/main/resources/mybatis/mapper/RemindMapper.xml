@@ -47,4 +47,19 @@
     select guid, task_id, list_id, user_id, remind_date
     from remind
   </select>
+
+  <!-- 查询当天提醒节点-->
+  <select id="selectByCurentDay" parameterType="map" resultMap="BaseResultMap">
+    select guid, task_id, list_id, user_id, remind_date
+    from remind
+    where user_id = #{userId,jdbcType=VARCHAR}
+    and remind_date between date_format(now(),'%Y-%m-%d')
+      and DATE_ADD(date_format(now(),'%Y-%m-%d'),INTERVAL 1 DAY)
+  </select>
+
+  <!-- 按用户ID删除提醒-->
+  <delete id="deleteByUserId">
+    delete from remind
+    where  user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
 </mapper>
